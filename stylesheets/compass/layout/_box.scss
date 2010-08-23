@@ -1,0 +1,15 @@
+@import "compass/css3/box";
+
+@mixin flexbox($direction, $align: center) {
+  @include display-box;
+  @include box-orient($direction);
+  @include box-align($align);
+}
+
+@mixin distribute-children($distribute) {
+  @include box-pack($distribute);
+}
+
+@mixin liquid($size: 1) {
+  @include box-flex($size);
+}
