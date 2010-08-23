@@ -1,0 +1,87 @@
+@import "compass/layout/floated";
+@import "compass/layout/box";
+@import "compass/reset";
+
+@include reset-html5;
+
+.clearfixed { @include pie-clearfix; }
+.column { @include floated(left, 0, 0); }
+
+.floated-layout {
+  aside   { @extend .column; }
+  article { @extend .column; }
+  aside, article { width: 33.333%; }
+  footer { clear: left; }
+}
+
+#page.fixed {
+  width: 960px;
+  @include centered;
+  @extend .floated-layout;
+}
+
+#page.elastic {
+  min-width: 640px;
+  max-width: 1100px;
+  @include centered;
+  @extend .floated-layout;
+}
+
+body {
+  text-align: center;
+}
+
+body > * {
+  text-align: left;
+}
+
+#page.box {
+  width: 960px;
+  @include centered;
+  @include flexbox(vertical, justify);
+/*  @include distribute-children(justify);*/
+  #body {
+    @include liquid;
+    @include flexbox(horizontal, justify);
+/*    @include distribute-children(justify);*/
+  }
+  aside, article   { @include liquid; }
+}
+
+#page.fluid {
+  @extend .floated-layout;
+}
+
+
+@media screen and (max-width: 500px) {
+  .floated-layout {
+    aside, article { @include sunken; display: block; }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #page.fluid {
+    aside { width: 25%; }
+    article { width: 50%; }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #page.fluid {
+    aside { width: 20%; }
+    article { width: 60%; }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #page.fluid {
+    aside { width: 15%; }
+    article { width: 70%; }
+  }
+}
+
+/* For demonstration purposes */
+header,
+footer  { min-height: 200px; background-color: yellow; }
+aside   { min-height: 400px; background-color: red;    }
+article { min-height: 600px; background-color: #4E89D3;}

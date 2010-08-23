@@ -1,0 +1,54 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+
+body { line-height: 1; color: black; background: white; }
+
+ol, ul { list-style: none; }
+
+table { border-collapse: separate; border-spacing: 0; vertical-align: middle; }
+
+caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
+
+q, blockquote { quotes: "" ""; }
+q:before, q:after, blockquote:before, blockquote:after { content: ""; }
+
+a img { border: none; }
+
+section, article, aside, header, footer, nav, dialog, figure { display: block; }
+
+.clearfixed { *zoom: 1; }
+.clearfixed:after { content: "\0020"; display: block; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+
+.column, .floated-layout aside, #page.fixed aside, #page.elastic aside, #page.fluid aside, .floated-layout article, #page.fixed article, #page.elastic article, #page.fluid article { display: inline; float: left; }
+
+.floated-layout aside, #page.fixed aside, #page.elastic aside, #page.fluid aside, .floated-layout article, #page.fixed article, #page.elastic article, #page.fluid article { width: 33.333%; }
+.floated-layout footer, #page.fixed footer, #page.elastic footer, #page.fluid footer { clear: left; }
+
+#page.fixed { width: 960px; margin-left: auto; margin-right: auto; }
+
+#page.elastic { min-width: 640px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+body { text-align: center; }
+
+body > * { text-align: left; }
+
+#page.box { width: 960px; margin-left: auto; margin-right: auto; display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; /*  @include distribute-children(justify);*/ }
+#page.box #body { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; box-orient: horizontal; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; /*    @include distribute-children(justify);*/ }
+#page.box aside, #page.box article { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; }
+
+@media screen and (max-width: 500px) { .floated-layout aside, #page.fixed aside, #page.elastic aside, #page.fluid aside, .floated-layout article, #page.fixed article, #page.elastic article, #page.fluid article { float: none; width: auto; margin-left: auto; margin-right: auto; display: block; } }
+
+@media screen and (min-width: 800px) { #page.fluid aside { width: 25%; }
+  #page.fluid article { width: 50%; } }
+
+@media screen and (min-width: 1000px) { #page.fluid aside { width: 20%; }
+  #page.fluid article { width: 60%; } }
+
+@media screen and (min-width: 1200px) { #page.fluid aside { width: 15%; }
+  #page.fluid article { width: 70%; } }
+
+/* For demonstration purposes */
+header, footer { min-height: 200px; background-color: yellow; }
+
+aside { min-height: 400px; background-color: red; }
+
+article { min-height: 600px; background-color: #4E89D3; }

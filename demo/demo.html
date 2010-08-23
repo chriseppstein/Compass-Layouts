@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Compass Layouts Demo</title>
+    <link rel="stylesheet" href="css/demo.css" type="text/css" media="screen">
+  </head>
+  <body>
+    <div id="page" class="fixed">
+    <header>
+      This is the header.
+      <select onchange="document.getElementById('page').className=this.value;">
+        <option value="fixed">fixed</option>
+        <option value="elastic">elastic</option>
+        <option value="fluid">fluid</option>
+        <option value="box">box</option>
+      </select>
+    </header>
+    <div id="body">
+      <aside class="nav">
+        Left Side Nav
+      </aside>
+      <article>
+        This is the main content
+      </article>
+      <aside class="callout">
+        Right Side callout
+      </aside>
+    </div>
+    <footer>
+      This is the footer.
+    </footer>
+  </body>
+</html>
