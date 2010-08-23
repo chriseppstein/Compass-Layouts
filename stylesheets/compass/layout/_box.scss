@@ -41,7 +41,7 @@
   > * {
     text-align: left;
   }
-  #{$box} {
+  > #{$box} {
     @include centered;
   }
 }
