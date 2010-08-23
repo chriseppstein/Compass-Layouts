@@ -7,20 +7,32 @@
 // and will not degrade particularly gracefully
 // unless you take some action to do so.
 
-@mixin flexbox($direction, $align: center) {
+// $orientation - One of: horizontal, vertical
+// $align - One of: start, end, center, baseline, stretch (default)
+@mixin flexbox($orientation: $default-box-orient, $align: $default-box-align) {
   @include display-box;
-  @include box-orient($direction);
+  @include box-orient($orientation);
   @include box-align($align);
 }
 
+// Distribute the children of the box. This is an alias for box-pack.
+// Can be one of `start`, `end`, `center`, `justify`
 @mixin distribute-children($distribute) {
   @include box-pack($distribute);
 }
 
+// Makes a box liquid (relative to the box container)
+// The remaining space that is left after the fixed with
+// boxes is distributed proportionally across the liquid
+// elements according to the $size parameter which must be
+// a positive integer.
 @mixin liquid($size: 1) {
   @include box-flex($size);
 }
 
+// Mix this into the element that contains the flexbox
+// to make the box container centered (probably the body element).
+// $box - the selector that identifies the flexbox. 
 @mixin centered-box-container($box) {
   text-align: center;
   > * {
