@@ -14,41 +14,28 @@
   footer { clear: left; }
 }
 
-#page.fixed {
+.fixed #page {
   width: 960px;
   @include centered;
   @extend .floated-layout;
 }
 
-#page.elastic {
+.elastic #page {
   min-width: 640px;
   max-width: 1100px;
   @include centered;
   @extend .floated-layout;
 }
 
-body {
-  text-align: center;
+body.box {
+  @include centered-box-container("#page");
+  #page   { @include flexbox(vertical, justify); width: 960px; }
+  #body   { @include liquid; @include flexbox(horizontal, justify); }
+  aside,
+  article { @include liquid; }
 }
 
-body > * {
-  text-align: left;
-}
-
-#page.box {
-  width: 960px;
-  @include centered;
-  @include flexbox(vertical, justify);
-/*  @include distribute-children(justify);*/
-  #body {
-    @include liquid;
-    @include flexbox(horizontal, justify);
-/*    @include distribute-children(justify);*/
-  }
-  aside, article   { @include liquid; }
-}
-
-#page.fluid {
+.fluid #page {
   @extend .floated-layout;
 }
 
@@ -60,21 +47,21 @@ body > * {
 }
 
 @media screen and (min-width: 800px) {
-  #page.fluid {
+  .fluid #page {
     aside { width: 25%; }
     article { width: 50%; }
   }
 }
 
 @media screen and (min-width: 1000px) {
-  #page.fluid {
+  .fluid #page {
     aside { width: 20%; }
     article { width: 60%; }
   }
 }
 
 @media screen and (min-width: 1200px) {
-  #page.fluid {
+  .fluid #page {
     aside { width: 15%; }
     article { width: 70%; }
   }

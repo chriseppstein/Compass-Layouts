@@ -18,33 +18,32 @@ section, article, aside, header, footer, nav, dialog, figure { display: block; }
 .clearfixed { *zoom: 1; }
 .clearfixed:after { content: "\0020"; display: block; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 
-.column, .floated-layout aside, #page.fixed aside, #page.elastic aside, #page.fluid aside, .floated-layout article, #page.fixed article, #page.elastic article, #page.fluid article { display: inline; float: left; }
+.column, .floated-layout aside, .fixed #page aside, .elastic #page aside, .fluid #page aside, .floated-layout article, .fixed #page article, .elastic #page article, .fluid #page article { display: inline; float: left; }
 
-.floated-layout aside, #page.fixed aside, #page.elastic aside, #page.fluid aside, .floated-layout article, #page.fixed article, #page.elastic article, #page.fluid article { width: 33.333%; }
-.floated-layout footer, #page.fixed footer, #page.elastic footer, #page.fluid footer { clear: left; }
+.floated-layout aside, .fixed #page aside, .elastic #page aside, .fluid #page aside, .floated-layout article, .fixed #page article, .elastic #page article, .fluid #page article { width: 33.333%; }
+.floated-layout footer, .fixed #page footer, .elastic #page footer, .fluid #page footer { clear: left; }
 
-#page.fixed { width: 960px; margin-left: auto; margin-right: auto; }
+.fixed #page { width: 960px; margin-left: auto; margin-right: auto; }
 
-#page.elastic { min-width: 640px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.elastic #page { min-width: 640px; max-width: 1100px; margin-left: auto; margin-right: auto; }
 
-body { text-align: center; }
+body.box { text-align: center; }
+body.box > * { text-align: left; }
+body.box #page { margin-left: auto; margin-right: auto; }
+body.box #page { display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; width: 960px; }
+body.box #body { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; box-orient: horizontal; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; }
+body.box aside, body.box article { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; }
 
-body > * { text-align: left; }
+@media screen and (max-width: 500px) { .floated-layout aside, .fixed #page aside, .elastic #page aside, .fluid #page aside, .floated-layout article, .fixed #page article, .elastic #page article, .fluid #page article { float: none; width: auto; margin-left: auto; margin-right: auto; display: block; } }
 
-#page.box { width: 960px; margin-left: auto; margin-right: auto; display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; /*  @include distribute-children(justify);*/ }
-#page.box #body { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; box-orient: horizontal; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; /*    @include distribute-children(justify);*/ }
-#page.box aside, #page.box article { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; }
+@media screen and (min-width: 800px) { .fluid #page aside { width: 25%; }
+  .fluid #page article { width: 50%; } }
 
-@media screen and (max-width: 500px) { .floated-layout aside, #page.fixed aside, #page.elastic aside, #page.fluid aside, .floated-layout article, #page.fixed article, #page.elastic article, #page.fluid article { float: none; width: auto; margin-left: auto; margin-right: auto; display: block; } }
+@media screen and (min-width: 1000px) { .fluid #page aside { width: 20%; }
+  .fluid #page article { width: 60%; } }
 
-@media screen and (min-width: 800px) { #page.fluid aside { width: 25%; }
-  #page.fluid article { width: 50%; } }
-
-@media screen and (min-width: 1000px) { #page.fluid aside { width: 20%; }
-  #page.fluid article { width: 60%; } }
-
-@media screen and (min-width: 1200px) { #page.fluid aside { width: 15%; }
-  #page.fluid article { width: 70%; } }
+@media screen and (min-width: 1200px) { .fluid #page aside { width: 15%; }
+  .fluid #page article { width: 70%; } }
 
 /* For demonstration purposes */
 header, footer { min-height: 200px; background-color: yellow; }

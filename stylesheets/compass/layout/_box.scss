@@ -1,4 +1,11 @@
 @import "compass/css3/box";
+@import "shared";
+
+// this is an experimental layout module
+// based on the new box layout module in css3
+// it is not fully supported by all browsers
+// and will not degrade particularly gracefully
+// unless you take some action to do so.
 
 @mixin flexbox($direction, $align: center) {
   @include display-box;
@@ -12,4 +19,14 @@
 
 @mixin liquid($size: 1) {
   @include box-flex($size);
+}
+
+@mixin centered-box-container($box) {
+  text-align: center;
+  > * {
+    text-align: left;
+  }
+  #{$box} {
+    @include centered;
+  }
 }

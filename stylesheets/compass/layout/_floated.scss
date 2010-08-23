@@ -1,5 +1,6 @@
 @import "compass/utilities/general/float";
 @import "compass/utilities/general/clearfix";
+@import "shared";
 
 // Direction of the float
 $compass-float-direction: left !default;
@@ -62,14 +63,6 @@ $compass-right-gutter-width: $compass-gutter-width - $compass-left-gutter-width 
 @mixin sunken {
   float: none;
   width: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// make an element centered within its fixed-width parent.
-// Can be applied to a top level float container to create
-// a centered layout within the window.
-@mixin centered {
   margin-left: auto;
   margin-right: auto;
 }
