@@ -27,6 +27,9 @@
 // elements according to the $size parameter which must be
 // a positive integer.
 @mixin liquid($size: 1) {
+  @if $size == none {
+    $size: 0;
+  }
   @include box-flex($size);
 }
 
