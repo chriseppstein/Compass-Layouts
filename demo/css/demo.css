@@ -23,27 +23,37 @@ section, article, aside, header, footer, nav, dialog, figure { display: block; }
 .floated-layout aside, .fixed #page aside, .elastic #page aside, .fluid #page aside, .floated-layout article, .fixed #page article, .elastic #page article, .fluid #page article { width: 33.333%; }
 .floated-layout footer, .fixed #page footer, .elastic #page footer, .fluid #page footer { clear: left; }
 
+.boxed-layout, body.box-fixed, body.box-elastic, body.box-fluid { text-align: center; }
+.boxed-layout > *, body.box-fixed > *, body.box-elastic > *, body.box-fluid > * { text-align: left; }
+.boxed-layout > #page, body.box-fixed > #page, body.box-elastic > #page, body.box-fluid > #page { margin-left: auto; margin-right: auto; }
+.boxed-layout #page, body.box-fixed #page, body.box-elastic #page, body.box-fluid #page { display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; -moz-box-align: stretch; -webkit-box-align: stretch; box-align: stretch; }
+.boxed-layout #body, body.box-fixed #body, body.box-elastic #body, body.box-fluid #body { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; box-orient: horizontal; -moz-box-align: stretch; -webkit-box-align: stretch; box-align: stretch; }
+.boxed-layout aside, body.box-fixed aside, body.box-elastic aside, body.box-fluid aside, .boxed-layout article, body.box-fixed article, body.box-elastic article, body.box-fluid article { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; }
+
 .fixed #page { width: 960px; margin-left: auto; margin-right: auto; }
 
 .elastic #page { min-width: 640px; max-width: 1100px; margin-left: auto; margin-right: auto; }
 
-body.box { text-align: center; }
-body.box > * { text-align: left; }
-body.box #page { margin-left: auto; margin-right: auto; }
-body.box #page { display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; width: 960px; }
-body.box #body { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; box-orient: horizontal; -moz-box-align: justify; -webkit-box-align: justify; box-align: justify; }
-body.box aside, body.box article { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; display: block; }
+body.box-fixed #page { width: 960px; }
 
-@media screen and (max-width: 500px) { .floated-layout aside, .fixed #page aside, .elastic #page aside, .fluid #page aside, .floated-layout article, .fixed #page article, .elastic #page article, .fluid #page article { float: none; width: auto; margin-left: auto; margin-right: auto; display: block; } }
+body.box-elastic #page { min-width: 640px; max-width: 1100px; width: 100%; }
+
+body.box-fluid #page { width: 100%; }
+
+@media screen and (max-width: 500px) { .floated-layout aside, .fixed #page aside, .elastic #page aside, .fluid #page aside, .floated-layout article, .fixed #page article, .elastic #page article, .fluid #page article { float: none; width: auto; margin-left: auto; margin-right: auto; display: block; }
+  .boxed-layout #body, body.box-fixed #body, body.box-elastic #body, body.box-fluid #body { display: -moz-box; display: -webkit-box; display: box; -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; -moz-box-align: stretch; -webkit-box-align: stretch; box-align: stretch; } }
 
 @media screen and (min-width: 800px) { .fluid #page aside { width: 25%; }
-  .fluid #page article { width: 50%; } }
+  .fluid #page article { width: 50%; }
+  body.box-fluid article { -moz-box-flex: 2; -webkit-box-flex: 2; box-flex: 2; display: block; } }
 
 @media screen and (min-width: 1000px) { .fluid #page aside { width: 20%; }
-  .fluid #page article { width: 60%; } }
+  .fluid #page article { width: 60%; }
+  body.box-fluid article { -moz-box-flex: 3; -webkit-box-flex: 3; box-flex: 3; display: block; } }
 
-@media screen and (min-width: 1200px) { .fluid #page aside { width: 15%; }
-  .fluid #page article { width: 70%; } }
+@media screen and (min-width: 1200px) { .fluid #page aside { width: 16.667%; }
+  .fluid #page article { width: 66.667%; }
+  body.box-fluid article { -moz-box-flex: 4; -webkit-box-flex: 4; box-flex: 4; display: block; } }
 
 /* For demonstration purposes */
 header, footer { min-height: 200px; background-color: yellow; }

@@ -4,9 +4,11 @@
 
 @include reset-html5;
 
+// Some base classes for conciseness.
 .clearfixed { @include pie-clearfix; }
 .column { @include floated(left, 0, 0); }
 
+// A base class for our floated layouts
 .floated-layout {
   aside   { @extend .column; }
   article { @extend .column; }
@@ -14,12 +16,23 @@
   footer { clear: left; }
 }
 
+// A base class for our boxed layouts
+.boxed-layout {
+  @include centered-box-container("#page");
+  #page   { @include flexbox(vertical); }
+  #body   { @include liquid; @include flexbox(horizontal); }
+  aside,
+  article { @include liquid; }
+}
+
+// A fixed width layout
 .fixed #page {
   width: 960px;
   @include centered;
   @extend .floated-layout;
 }
 
+// An elastic layout
 .elastic #page {
   min-width: 640px;
   max-width: 1100px;
@@ -27,43 +40,71 @@
   @extend .floated-layout;
 }
 
-body.box {
-  @include centered-box-container("#page");
-  #page   { @include flexbox(vertical, justify); width: 960px; }
-  #body   { @include liquid; @include flexbox(horizontal, justify); }
-  aside,
-  article { @include liquid; }
-}
-
+// A fluid layout (full width)
 .fluid #page {
   @extend .floated-layout;
 }
 
+// a fixed box layout
+body.box-fixed {
+  @extend .boxed-layout;
+  #page { width: 960px; }
+}
 
+// an elastic box layout
+body.box-elastic {
+  @extend .boxed-layout;
+  #page { min-width: 640px; max-width: 1100px; width: 100%;}
+}
+
+// a fluid box layout
+body.box-fluid {
+  @extend .boxed-layout;
+  #page { width: 100%; }
+}
+
+// Respond to browser resizing to keep the layout readable
 @media screen and (max-width: 500px) {
   .floated-layout {
     aside, article { @include sunken; display: block; }
+  }
+  .boxed-layout {
+    #body   { @include flexbox(vertical); }
   }
 }
 
 @media screen and (min-width: 800px) {
   .fluid #page {
-    aside { width: 25%; }
-    article { width: 50%; }
+    // with a floated layout we have to recalculate all float proportions
+    aside   { width: percentage(1/4); }
+    article { width: percentage(2/4); }
+  }
+  body.box-fluid {
+    // with a box layout, the proportions are recalculated automatically.
+    // The article will be twice the width of the asides.
+    article { @include liquid(2); }
   }
 }
 
 @media screen and (min-width: 1000px) {
   .fluid #page {
-    aside { width: 20%; }
-    article { width: 60%; }
+    aside   { width: percentage(1/5); }
+    article { width: percentage(3/5); }
+  }
+  body.box-fluid {
+    // The article will be three times the width of the asides.
+    article { @include liquid(3); }
   }
 }
 
 @media screen and (min-width: 1200px) {
   .fluid #page {
-    aside { width: 15%; }
-    article { width: 70%; }
+    aside   { width: percentage(1/6); }
+    article { width: percentage(4/6); }
+  }
+  body.box-fluid {
+    // The article will be four times the width of the asides.
+    article { @include liquid(4); }
   }
 }
 
